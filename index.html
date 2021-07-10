@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="normal.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <title>Zoater</title>
+</head>
+
+<body class="main">
+  <div class="container">
+    <h1 class='center-text'>Zoater <span class='small'>Connecting Business</span></h1>
+    <div class="sub-container">
+      <h3 class='center-text'>Under Construction</h2>
+        <div id=car-go class="car-go" onclick=moveCar()>
+          <img src='black-car-icon.png' alt='car'>
+        </div>
+    </div>
+  </div>
+</body>
+<script>
+  function setClass(elem, aclass) {
+    elem.className = aclass
+  }
+
+  function addClass(elem, add) {
+    elem.className += " " + add
+  }
+
+  async function moveCar() {
+    // document.getElementById('car-go').className = 'car-go-right'
+    let elem = document.getElementById('car-go')
+    // console.log(elem.classList)
+    if (elem.classList.contains('car-go-right-low')) {
+      setClass(elem, 'go-right-reverse')
+      await setTimeout(setClass, 2000, elem, 'car-go-low go-left-reverse')
+      // console.log(elem.classList)
+    }
+    else if (elem.classList.contains('car-go-low')) {
+      // console.log('in elif  car-go-low')
+      setClass(elem, 'car-go-low')
+      await setTimeout(setClass, 2000, elem, 'car-go-right')
+    }
+    else if (elem.classList.contains('go-left-reverse')) {
+      setClass(elem, 'car-go')
+      await setTimeout(setClass, 2000, elem, 'car-go-right-low')
+      // console.log(elem.classList)
+    }
+    else if (elem.classList.contains('car-go-right')) {
+
+      setClass(elem, 'car-top-right-reverse')
+      await setTimeout(setClass, 2000, elem, 'car-go-home')
+    }
+    else if (elem.classList.contains('car-go-home')) {
+      setClass(elem, 'car-go')
+      await setTimeout(setClass, 2000, elem, 'car-go-right-low')
+    }
+    else {
+      elem.className = 'car-go-right-low'
+    }
+  }
+
+</script>
+
+</html>
